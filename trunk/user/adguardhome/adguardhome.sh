@@ -62,7 +62,7 @@ adg_file="/etc/storage/adg.sh"
 if [ ! -f "$adg_file" ] || [ ! -s "$adg_file" ] ; then
 	cat > "$adg_file" <<-\EEE
 bind_host: 0.0.0.0
-bind_port: 3000
+bind_port: 3030
 auth_name: admin
 auth_pass: meihao
 language: zh-cn
@@ -139,7 +139,8 @@ fi
 dl_adg(){
 logger -t "AdGuardHome" "下载AdGuardHome"
 #wget --no-check-certificate -O /tmp/AdGuardHome.tar.gz https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.104.0/AdGuardHome_linux_mipsle_softfloat.tar.gz
-curl -k -s -o /tmp/AdGuardHome/AdGuardHome --connect-timeout 10 --retry 3 https://cdn.jsdelivr.net/gh/chongshengB/rt-n56u/trunk/user/adguardhome/AdGuardHome
+curl -k -s -o /tmp/AdGuardHome/AdGuardHome --connect-timeout 10 --retry 3 https://raw.githubusercontent.com/kmimx/rt-n56u/master/trunk/user/adguardhome/AdGuardHome
+#https://cdn.jsdelivr.net/gh/kmimx/rt-n56u/trunk/user/adguardhome/AdGuardHome
 if [ ! -f "/tmp/AdGuardHome/AdGuardHome" ]; then
 logger -t "AdGuardHome" "AdGuardHome下载失败，请检查是否能正常访问github!程序将退出。"
 nvram set adg_enable=0
